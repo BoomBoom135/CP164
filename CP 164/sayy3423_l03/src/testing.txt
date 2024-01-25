@@ -1,0 +1,78 @@
+"""
+-------------------------------------------------------
+Assignment: l03
+-------------------------------------------------------
+Author:  Nicholas Sayyad Shahbaz
+ID:      169063423
+Email:   sayy3423@mylaurier.ca
+Version: 2024-01-24
+-------------------------------------------------------
+"""
+-------------------------------------------------------
+t03
+-------------------------------------------------------
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+Queue Empty
+Pushed 5 into Queue
+Queue Not Empty
+Peaked: 5
+Removed: 5
+Pushed 4 into Queue
+Queue Not Empty
+Peaked: 4
+Removed: 4
+Pushed 3 into Queue
+Queue Not Empty
+Peaked: 3
+Removed: 3
+Pushed 2 into Queue
+Queue Not Empty
+Peaked: 2
+Removed: 2
+Pushed 1 into Queue
+-------------------------------------------------------
+t06
+-------------------------------------------------------
+[4, 2, 5, 7, 6, 8, 9, 3]
+
+[4, 2, 5, 7, 6, 8, 9, 3]
+
+Queue Empty
+Pushed 9 into PQ
+PQ Empty
+Peaked: 9
+Removed: 9
+Pushed 6 into PQ
+PQ Empty
+Peaked: 6
+Removed: 6
+Pushed 8 into PQ
+PQ Empty
+Peaked: 8
+Removed: 8
+Pushed 4 into PQ
+PQ Empty
+Peaked: 4
+Removed: 4
+Pushed 6 into PQ
+PQ Empty
+Peaked: 6
+Removed: 6
+Pushed 5 into PQ
+PQ Empty
+Peaked: 5
+Removed: 5
+Pushed 3 into PQ
+PQ Empty
+Peaked: 3
+Removed: 3
+Pushed 2 into PQ
+PQ Empty
+Peaked: 2
+Removed: 2
+Pushed 4 into PQ
+
+-------------------------------------------------------

@@ -1,0 +1,586 @@
+"""
+-------------------------------------------------------
+Assignment: l02
+-------------------------------------------------------
+Author:  Nicholas Sayyad Shahbaz
+ID:      169063423
+Email:   sayy3423@mylaurier.ca
+Version: 2024-01-11
+-------------------------------------------------------
+"""
+-------------------------------------------------------
+t01
+-------------------------------------------------------
+Value: 3
+Peek: 3
+
+-------------------------------------------------------
+t02
+-------------------------------------------------------
+[9, 8, 7, 6, 5, 4, 3, 2, 1]
+-------------------------------------------------------
+t03
+-------------------------------------------------------
+[9, 8, 7, 6, 5, 4, 3, 2, 1]
+
+-------------------------------------------------------
+t04
+-------------------------------------------------------
+Empty Stack: True
+Pushing 5 and 7
+Popping Stack: 7
+Peeking Stack: 5
+
+-------------------------------------------------------
+t05
+-------------------------------------------------------
+Empty Stack!
+Pushed Name:       Lasagna
+Origin:     7
+Vegetarian: False
+Calories:   135
+Stack Not Empty!: False
+Peeking Stack: Name:       Lasagna
+Origin:     7
+Vegetarian: False
+Calories:   135
+Popping Stack: Name:       Lasagna
+Origin:     7
+Vegetarian: False
+Calories:   135
+Pushed Name:       Butter Chicken
+Origin:     2
+Vegetarian: False
+Calories:   490
+Stack Not Empty!: False
+Peeking Stack: Name:       Butter Chicken
+Origin:     2
+Vegetarian: False
+Calories:   490
+Popping Stack: Name:       Butter Chicken
+Origin:     2
+Vegetarian: False
+Calories:   490
+Pushed Name:       Moo Goo Guy Pan
+Origin:     1
+Vegetarian: False
+Calories:   272
+Stack Not Empty!: False
+Peeking Stack: Name:       Moo Goo Guy Pan
+Origin:     1
+Vegetarian: False
+Calories:   272
+Popping Stack: Name:       Moo Goo Guy Pan
+Origin:     1
+Vegetarian: False
+Calories:   272
+Pushed Name:       Vegetable Alicha
+Origin:     3
+Vegetarian: True
+Calories:   138
+Stack Not Empty!: False
+Peeking Stack: Name:       Vegetable Alicha
+Origin:     3
+Vegetarian: True
+Calories:   138
+Popping Stack: Name:       Vegetable Alicha
+Origin:     3
+Vegetarian: True
+Calories:   138
+Pushed Name:       Spanakopita
+Origin:     5
+Vegetarian: True
+Calories:   260
+Stack Not Empty!: False
+Peeking Stack: Name:       Spanakopita
+Origin:     5
+Vegetarian: True
+Calories:   260
+Popping Stack: Name:       Spanakopita
+Origin:     5
+Vegetarian: True
+Calories:   260
+Pushed Name:       Chirashi Don
+Origin:     6
+Vegetarian: False
+Calories:   600
+Stack Not Empty!: False
+Peeking Stack: Name:       Chirashi Don
+Origin:     6
+Vegetarian: False
+Calories:   600
+Popping Stack: Name:       Chirashi Don
+Origin:     6
+Vegetarian: False
+Calories:   600
+Pushed Name:       Canuck Burger
+Origin:     0
+Vegetarian: False
+Calories:   7500
+Stack Not Empty!: False
+Peeking Stack: Name:       Canuck Burger
+Origin:     0
+Vegetarian: False
+Calories:   7500
+Popping Stack: Name:       Canuck Burger
+Origin:     0
+Vegetarian: False
+Calories:   7500
+Pushed Name:       Turducken
+Origin:     8
+Vegetarian: False
+Calories:   12240
+Stack Not Empty!: False
+Peeking Stack: Name:       Turducken
+Origin:     8
+Vegetarian: False
+Calories:   12240
+Popping Stack: Name:       Turducken
+Origin:     8
+Vegetarian: False
+Calories:   12240
+Pushed Name:       Shark Fin Soup
+Origin:     1
+Vegetarian: False
+Calories:   46
+Stack Not Empty!: False
+Peeking Stack: Name:       Shark Fin Soup
+Origin:     1
+Vegetarian: False
+Calories:   46
+Popping Stack: Name:       Shark Fin Soup
+Origin:     1
+Vegetarian: False
+Calories:   46
+Pushed Name:       Chamuco
+Origin:     4
+Vegetarian: True
+Calories:   150
+Stack Not Empty!: False
+Peeking Stack: Name:       Chamuco
+Origin:     4
+Vegetarian: True
+Calories:   150
+Popping Stack: Name:       Chamuco
+Origin:     4
+Vegetarian: True
+Calories:   150
+Pushed Name:       Natto
+Origin:     6
+Vegetarian: True
+Calories:   212
+Stack Not Empty!: False
+Peeking Stack: Name:       Natto
+Origin:     6
+Vegetarian: True
+Calories:   212
+Popping Stack: Name:       Natto
+Origin:     6
+Vegetarian: True
+Calories:   212
+Pushed Name:       Canada Goose Chili
+Origin:     0
+Vegetarian: False
+Calories:   199
+Stack Not Empty!: False
+Peeking Stack: Name:       Canada Goose Chili
+Origin:     0
+Vegetarian: False
+Calories:   199
+Popping Stack: Name:       Canada Goose Chili
+Origin:     0
+Vegetarian: False
+Calories:   199
+Pushed Name:       Diet Free-Range Gluten-free Water
+Origin:     8
+Vegetarian: True
+Calories:   0
+Stack Not Empty!: False
+Peeking Stack: Name:       Diet Free-Range Gluten-free Water
+Origin:     8
+Vegetarian: True
+Calories:   0
+Popping Stack: Name:       Diet Free-Range Gluten-free Water
+Origin:     8
+Vegetarian: True
+Calories:   0
+Pushed Name:       Kung Pao Chicken
+Origin:     1
+Vegetarian: False
+Calories:   229
+Stack Not Empty!: False
+Peeking Stack: Name:       Kung Pao Chicken
+Origin:     1
+Vegetarian: False
+Calories:   229
+Popping Stack: Name:       Kung Pao Chicken
+Origin:     1
+Vegetarian: False
+Calories:   229
+Pushed Name:       General Tao Chicken
+Origin:     1
+Vegetarian: False
+Calories:   850
+Stack Not Empty!: False
+Peeking Stack: Name:       General Tao Chicken
+Origin:     1
+Vegetarian: False
+Calories:   850
+Popping Stack: Name:       General Tao Chicken
+Origin:     1
+Vegetarian: False
+Calories:   850
+Pushed Name:       Spicy Vegetable Moo Shu
+Origin:     1
+Vegetarian: True
+Calories:   140
+Stack Not Empty!: False
+Peeking Stack: Name:       Spicy Vegetable Moo Shu
+Origin:     1
+Vegetarian: True
+Calories:   140
+Popping Stack: Name:       Spicy Vegetable Moo Shu
+Origin:     1
+Vegetarian: True
+Calories:   140
+Pushed Name:       BBQ Pork
+Origin:     1
+Vegetarian: False
+Calories:   920
+Stack Not Empty!: False
+Peeking Stack: Name:       BBQ Pork
+Origin:     1
+Vegetarian: False
+Calories:   920
+Popping Stack: Name:       BBQ Pork
+Origin:     1
+Vegetarian: False
+Calories:   920
+Pushed Name:       Orange Chicken
+Origin:     1
+Vegetarian: False
+Calories:   800
+Stack Not Empty!: False
+Peeking Stack: Name:       Orange Chicken
+Origin:     1
+Vegetarian: False
+Calories:   800
+Popping Stack: Name:       Orange Chicken
+Origin:     1
+Vegetarian: False
+Calories:   800
+Pushed Name:       Vegetables with Cashew Nuts
+Origin:     1
+Vegetarian: True
+Calories:   143
+Stack Not Empty!: False
+Peeking Stack: Name:       Vegetables with Cashew Nuts
+Origin:     1
+Vegetarian: True
+Calories:   143
+Popping Stack: Name:       Vegetables with Cashew Nuts
+Origin:     1
+Vegetarian: True
+Calories:   143
+Pushed Name:       Lemon Chicken
+Origin:     1
+Vegetarian: False
+Calories:   226
+Stack Not Empty!: False
+Peeking Stack: Name:       Lemon Chicken
+Origin:     1
+Vegetarian: False
+Calories:   226
+Popping Stack: Name:       Lemon Chicken
+Origin:     1
+Vegetarian: False
+Calories:   226
+Pushed Name:       Beef with Green Pepper
+Origin:     1
+Vegetarian: False
+Calories:   251
+Stack Not Empty!: False
+Peeking Stack: Name:       Beef with Green Pepper
+Origin:     1
+Vegetarian: False
+Calories:   251
+Popping Stack: Name:       Beef with Green Pepper
+Origin:     1
+Vegetarian: False
+Calories:   251
+Pushed Name:       Sweet and Sour Pork
+Origin:     1
+Vegetarian: False
+Calories:   231
+Stack Not Empty!: False
+Peeking Stack: Name:       Sweet and Sour Pork
+Origin:     1
+Vegetarian: False
+Calories:   231
+Popping Stack: Name:       Sweet and Sour Pork
+Origin:     1
+Vegetarian: False
+Calories:   231
+Pushed Name:       Szechuan Shrimp
+Origin:     1
+Vegetarian: False
+Calories:   516
+Stack Not Empty!: False
+Peeking Stack: Name:       Szechuan Shrimp
+Origin:     1
+Vegetarian: False
+Calories:   516
+Popping Stack: Name:       Szechuan Shrimp
+Origin:     1
+Vegetarian: False
+Calories:   516
+Pushed Name:       Poutine
+Origin:     0
+Vegetarian: False
+Calories:   710
+Stack Not Empty!: False
+Peeking Stack: Name:       Poutine
+Origin:     0
+Vegetarian: False
+Calories:   710
+Popping Stack: Name:       Poutine
+Origin:     0
+Vegetarian: False
+Calories:   710
+Pushed Name:       Teppanyaki
+Origin:     6
+Vegetarian: False
+Calories:   200
+Stack Not Empty!: False
+Peeking Stack: Name:       Teppanyaki
+Origin:     6
+Vegetarian: False
+Calories:   200
+Popping Stack: Name:       Teppanyaki
+Origin:     6
+Vegetarian: False
+Calories:   200
+Pushed Name:       Greek Salad
+Origin:     5
+Vegetarian: True
+Calories:   185
+Stack Not Empty!: False
+Peeking Stack: Name:       Greek Salad
+Origin:     5
+Vegetarian: True
+Calories:   185
+Popping Stack: Name:       Greek Salad
+Origin:     5
+Vegetarian: True
+Calories:   185
+Pushed Name:       Fettuccine
+Origin:     7
+Vegetarian: False
+Calories:   266
+Stack Not Empty!: False
+Peeking Stack: Name:       Fettuccine
+Origin:     7
+Vegetarian: False
+Calories:   266
+Popping Stack: Name:       Fettuccine
+Origin:     7
+Vegetarian: False
+Calories:   266
+Pushed Name:       Teriyaki
+Origin:     6
+Vegetarian: False
+Calories:   233
+Stack Not Empty!: False
+Peeking Stack: Name:       Teriyaki
+Origin:     6
+Vegetarian: False
+Calories:   233
+Popping Stack: Name:       Teriyaki
+Origin:     6
+Vegetarian: False
+Calories:   233
+Pushed Name:       Shortbread 
+Origin:     9
+Vegetarian: True
+Calories:   502
+Stack Not Empty!: False
+Peeking Stack: Name:       Shortbread 
+Origin:     9
+Vegetarian: True
+Calories:   502
+Popping Stack: Name:       Shortbread 
+Origin:     9
+Vegetarian: True
+Calories:   502
+Pushed Name:       Pavlova
+Origin:     10
+Vegetarian: True
+Calories:   272
+Stack Not Empty!: False
+Peeking Stack: Name:       Pavlova
+Origin:     10
+Vegetarian: True
+Calories:   272
+Popping Stack: Name:       Pavlova
+Origin:     10
+Vegetarian: True
+Calories:   272
+Pushed Name:       Hokey Pokey Ice Cream
+Origin:     10
+Vegetarian: True
+Calories:   106
+Stack Not Empty!: False
+Peeking Stack: Name:       Hokey Pokey Ice Cream
+Origin:     10
+Vegetarian: True
+Calories:   106
+Popping Stack: Name:       Hokey Pokey Ice Cream
+Origin:     10
+Vegetarian: True
+Calories:   106
+Pushed Name:       Fricot
+Origin:     0
+Vegetarian: False
+Calories:   360
+Stack Not Empty!: False
+Peeking Stack: Name:       Fricot
+Origin:     0
+Vegetarian: False
+Calories:   360
+Popping Stack: Name:       Fricot
+Origin:     0
+Vegetarian: False
+Calories:   360
+Pushed Name:       Chip Butty
+Origin:     11
+Vegetarian: True
+Calories:   956
+Stack Not Empty!: False
+Peeking Stack: Name:       Chip Butty
+Origin:     11
+Vegetarian: True
+Calories:   956
+Popping Stack: Name:       Chip Butty
+Origin:     11
+Vegetarian: True
+Calories:   956
+Pushed Name:       Grilled Salmon
+Origin:     0
+Vegetarian: False
+Calories:   511
+Stack Not Empty!: False
+Peeking Stack: Name:       Grilled Salmon
+Origin:     0
+Vegetarian: False
+Calories:   511
+Popping Stack: Name:       Grilled Salmon
+Origin:     0
+Vegetarian: False
+Calories:   511
+Pushed Name:       Ravioli
+Origin:     7
+Vegetarian: False
+Calories:   246
+Stack Not Empty!: False
+Peeking Stack: Name:       Ravioli
+Origin:     7
+Vegetarian: False
+Calories:   246
+Popping Stack: Name:       Ravioli
+Origin:     7
+Vegetarian: False
+Calories:   246
+Pushed Name:       Crepe
+Origin:     7
+Vegetarian: True
+Calories:   186
+Stack Not Empty!: False
+Peeking Stack: Name:       Crepe
+Origin:     7
+Vegetarian: True
+Calories:   186
+Popping Stack: Name:       Crepe
+Origin:     7
+Vegetarian: True
+Calories:   186
+Pushed Name:       Fried Rice
+Origin:     1
+Vegetarian: False
+Calories:   425
+Stack Not Empty!: False
+Peeking Stack: Name:       Fried Rice
+Origin:     1
+Vegetarian: False
+Calories:   425
+Popping Stack: Name:       Fried Rice
+Origin:     1
+Vegetarian: False
+Calories:   425
+Pushed Name:       Pepperoni Pizza
+Origin:     7
+Vegetarian: False
+Calories:   713
+Stack Not Empty!: False
+Peeking Stack: Name:       Pepperoni Pizza
+Origin:     7
+Vegetarian: False
+Calories:   713
+Popping Stack: Name:       Pepperoni Pizza
+Origin:     7
+Vegetarian: False
+Calories:   713
+Pushed Name:       Chicken Kabob
+Origin:     2
+Vegetarian: False
+Calories:   167
+Stack Not Empty!: False
+Peeking Stack: Name:       Chicken Kabob
+Origin:     2
+Vegetarian: False
+Calories:   167
+Popping Stack: Name:       Chicken Kabob
+Origin:     2
+Vegetarian: False
+Calories:   167
+Pushed Name:       Panzerotti
+Origin:     7
+Vegetarian: False
+Calories:   770
+Stack Not Empty!: False
+Peeking Stack: Name:       Panzerotti
+Origin:     7
+Vegetarian: False
+Calories:   770
+Popping Stack: Name:       Panzerotti
+Origin:     7
+Vegetarian: False
+Calories:   770
+Pushed Name:       Spring Rolls
+Origin:     1
+Vegetarian: True
+Calories:   200
+Stack Not Empty!: False
+Peeking Stack: Name:       Spring Rolls
+Origin:     1
+Vegetarian: True
+Calories:   200
+Popping Stack: Name:       Spring Rolls
+Origin:     1
+Vegetarian: True
+Calories:   200
+Pushed Name:       Chicken Chow Mein
+Origin:     1
+Vegetarian: False
+Calories:   178
+Stack Not Empty!: False
+Peeking Stack: Name:       Chicken Chow Mein
+Origin:     1
+Vegetarian: False
+Calories:   178
+Popping Stack: Name:       Chicken Chow Mein
+Origin:     1
+Vegetarian: False
+Calories:   178
+Pushed Name:       Chicken Wings
+Origin:     8
+Vegetarian: False

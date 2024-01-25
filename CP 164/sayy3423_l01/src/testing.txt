@@ -1,0 +1,34 @@
+"""
+-------------------------------------------------------
+Assignment: l01
+-------------------------------------------------------
+Author:  Nicholas Sayyad Shahbaz
+ID:      169063423
+Email:   sayy3423@mylaurier.ca
+Version: 2023-01-09
+-------------------------------------------------------
+"""
+-------------------------------------------------------
+t01
+-------------------------------------------------------
+Food Name: Pizza
+Origin 0 Canadian
+ 1 Chinese
+ 2 Indian
+ 3 Ethiopian
+ 4 Mexican
+ 5 Greek
+ 6 Japanese
+ 7 Italian
+ 8 American
+ 9 Scottish
+10 New Zealand
+11 English
+: 7
+Vegetarian (Y/N):y
+Calories: 400
+
+Name:       Pizza
+Origin:     Italian
+Vegetarian: True
+Calories:   400
