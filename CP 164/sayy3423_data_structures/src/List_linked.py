@@ -5,7 +5,7 @@ Linked version of the list ADT.
 Author:  David Brown
 ID:      123456789
 Email:   dbrown@wlu.ca
-__updated__ = "2024-02-14"
+__updated__ = "2024-03-07"
 -------------------------------------------------------
 """
 from copy import deepcopy
@@ -87,11 +87,16 @@ class List:
         """
         # your code here
         if self._front is None:
-            self._front = _List_Node(value, None)
-            self._rear = self._front
+
+            node = _List_Node(value, None)
+            self._rear = node
+            self._front = node
+
         else:
+
             node = _List_Node(value, self._front)
             self._front = node
+
         self._count += 1
         return
 
@@ -108,17 +113,15 @@ class List:
         -------------------------------------------------------
         """
         # your code here
-        node = _List_Node(value, None)
-        if self._rear is None:
+        if self._front is None:
 
-            self._rear = _List_Node(value, None)
-
-            self._front = self._rear
+            node = _List_Node(value, None)
+            self._rear = node
+            self._front = node
 
         else:
 
             node = _List_Node(value, None)
-
             self._rear._next = node
             self._rear = node
         self._count += 1
@@ -148,16 +151,15 @@ class List:
             self.append(value)
         else:
             j = 0
-            previous = None
-            current = self._front
+            prev = None
+            curr = self._front
             while j < i:
-                previous = current
-                current = current._next
+                prev = curr
+                curr = curr._next
                 j += 1
-            node = _List_Node(value, current)
-            previous._next = node
+            node = _List_Node(value, curr)
+            prev._next = node
             self._count += 1
-
         return
 
     def _linear_search(self, key):
@@ -173,23 +175,23 @@ class List:
         Returns:
             previous - pointer to the node previous to the node containing key (_ListNode)
             current - pointer to the node containing key (_ListNode)
-            index - index of the node containing key, -1 if key is not found (int)
+            index - index of the node containing key (int)
         -------------------------------------------------------
         """
         # your code here
-        previous = None
-        current = self._front
+        prev = None
+        curr = self._front
         index = 0
 
-        while current is not None and current._value != key:
-            previous = current
-            current = current._next
+        while curr is not None and curr._value != key:
+            prev = curr
+            curr = curr._next
             index += 1
 
-        if current is None:
+        if curr is None:
             index = -1
 
-        return previous, current, index
+        return prev, curr, index
 
     def remove(self, key):
         """
@@ -207,20 +209,25 @@ class List:
         previous, current, _ = self._linear_search(key)
 
         if current is None:
+
             value = None
         else:
             value = current._value
             self._count -= 1
 
             if previous is None:
+
                 self._front = self._front._next
 
                 if self._front is None:
+
                     self._rear = None
             else:
+
                 previous._next = current._next
 
                 if previous._next is None:
+
                     self._rear = previous
         return value
 
@@ -237,7 +244,12 @@ class List:
         assert self._front is not None, "Cannot remove from an empty list"
 
         # your code here
-        return
+        value = self._front._value
+        self._count -= 1
+        self._front = self._front._next
+        if self._front is None:
+            self._rear = None
+        return value
 
     def remove_many(self, key):
         """
@@ -252,6 +264,26 @@ class List:
         -------------------------------------------------------
         """
         # your code here
+        f = self._front
+        while f is not None and f._value == key:
+            self.remove_front()
+            f = self._front
+
+        curr = self._front
+        prev = _List_Node(None, None)
+        while curr is not None:
+            if curr._value == key:
+                prev._next = curr._next
+                curr._next = None
+                curr = prev._next
+                self._count -= 1
+            else:
+                prev = curr
+                curr = curr._next
+        if self._count > 0:
+            self._rear = prev
+        else:
+            self._rear = None
         return
 
     def find(self, key):
@@ -268,11 +300,11 @@ class List:
         """
         # your code here
         previous, current, index = self._linear_search(key)
-
-        if current is not None:
-            value = deepcopy(current._value)
-        else:
+        if current is None:
             value = None
+        else:
+            value = deepcopy(current._value)
+
         return value
 
     def peek(self):
@@ -305,7 +337,8 @@ class List:
         """
         # your code here
         previous, current, index = self._linear_search(key)
-        return index
+        i = index
+        return i
 
     def _is_valid_index(self, i):
         """
@@ -342,7 +375,7 @@ class List:
         current = self._front
 
         if i < 0:
-            # negative index - convert to positive
+
             i = self._count + i
         j = 0
 
@@ -373,7 +406,7 @@ class List:
         current = self._front
 
         if i < 0:
-            # negative index - convert to positive
+
             i = self._count + i
         j = 0
 
@@ -382,6 +415,7 @@ class List:
             j += 1
 
         current._value = deepcopy(value)
+
         return
 
     def __contains__(self, key):
@@ -398,6 +432,7 @@ class List:
         """
         # your code here
         previous, current, index = self._linear_search(key)
+
         return current is not None
 
     def max(self):
@@ -413,15 +448,15 @@ class List:
         assert self._front is not None, "Cannot find maximum of an empty list"
 
         # your code here
-        maxNode = self._front
-        current = self._front._next
+        max_node = self._front
+        curr = self._front._next
 
-        while current is not None:
-            if maxNode._value < current._value:
-                maxNode = current
-            current = current._next
-        maxData = deepcopy(maxNode._value)
-        return maxData
+        while curr is not None:
+            if max_node._value < curr._value:
+                max_node = curr
+            curr = curr._next
+        max_data = deepcopy(max_node._value)
+        return max_data
 
     def min(self):
         """
@@ -436,15 +471,15 @@ class List:
         assert self._front is not None, "Cannot find maximum of an empty list"
 
         # your code here
-        minNode = self._front
-        current = self._front._next
+        min_node = self._front
+        curr = self._front._next
 
-        while current is not None:
-            if minNode._value > current._value:
-                minNode = current
-            current = current._next
-        minData = deepcopy(minNode._value)
-        return minData
+        while curr is not None:
+            if min_node._value > curr._value:
+                min_node = curr
+            curr = curr._next
+        min_data = deepcopy(min_node._value)
+        return min_data
 
     def count(self, key):
         """
@@ -459,15 +494,14 @@ class List:
         -------------------------------------------------------
         """
         # your code here
-        number = 0
-        current = self._front
+        num = 0
+        curr = self._front
 
-        while current is not None:
-            if key == current._value:
-                number += 1
-            current = current._next
-
-        return number
+        while curr is not None:
+            if key == curr._value:
+                num += 1
+            curr = curr._next
+        return num
 
     def reverse(self):
         """
@@ -482,6 +516,17 @@ class List:
         -------------------------------------------------------
         """
         # your code here
+        self._rear = self._front
+        previous = None
+        current = self._front
+
+        while current is not None:
+            t = current._next
+            current._next = previous
+            previous = current
+            current = t
+
+        self._front = previous
         return
 
     def reverse_r(self):
@@ -497,6 +542,18 @@ class List:
         -------------------------------------------------------
         """
         # your code here
+        self._rear = self._front
+        self._aux_reverse_r(None, self._front)
+
+        return
+
+    def _aux_reverse_r(self, previous, current):
+        if current is None:
+            self._front = previous
+        else:
+            t = current._next
+            current._next = previous
+            self._aux_reverse_r(current, t)
         return
 
     def clean(self):
@@ -512,6 +569,30 @@ class List:
         -------------------------------------------------------
         """
         # your code here
+        node = self._front
+
+        while node is not None:
+
+            previous = node
+            current = node._next
+
+            while current is not None:
+
+                if current._value == node._value:
+
+                    previous._next = current._next
+                    self._count -= 1
+
+                else:
+
+                    previous = current
+
+                current = current._next
+
+            self._rear = previous
+
+            node = node._next
+
         return
 
     def pop(self, *args):
@@ -610,9 +691,18 @@ class List:
         -------------------------------------------------------
         """
         # your code here
-        return
+        equals = self._count == target._count
+        t_node = target._front
+        s_node = self._front
 
-    def identical_r(self, other):
+        while s_node is not None and equals is True:
+            if s_node._value != t_node._value:
+                equals = False
+            s_node = s_node._next
+            t_node = t_node._next
+        return equals
+
+    def is_identical_r(self, other):
         """
         ---------------------------------------------------------
         Determines whether two lists are identical. 
@@ -627,7 +717,22 @@ class List:
         -------------------------------------------------------
         """
         # your code here
-        return
+        if self._count != other._count:
+            identical = False
+        else:
+            identical = self._aux_indentical(self._front, other._front)
+
+        return identical
+
+    def _aux_indentical(self, node1, node2):
+        if node1 is None:
+            identical = True
+        else:
+            if node1._value != node2._value:
+                identical = False
+            else:
+                identical = self._aux_indentical(node1._next, node2._next)
+        return identical
 
     def split(self):
         """
@@ -642,7 +747,21 @@ class List:
         -------------------------------------------------------
         """
         # your code here
-        return
+        target1 = List()
+        target2 = List()
+        m = self._count // 2 + self._count % 2
+
+        if self._front is not None:
+
+            for i in range(m):
+
+                target1._move_front_to_rear(self)
+
+        while self._front is not None:
+
+            target2._move_front_to_rear(self)
+
+        return target1, target2
 
     def split_alt(self):
         """
@@ -659,7 +778,19 @@ class List:
         -------------------------------------------------------
         """
         # your code here
-        return
+        target1 = List()
+        target2 = List()
+        l = True
+
+        while self._front is not None:
+
+            if l:
+                target1._move_front_to_rear(self)
+            else:
+                target2._move_front_to_rear(self)
+            l = not l
+
+        return target1, target2
 
     def split_alt_r(self):
         """
@@ -678,6 +809,15 @@ class List:
         -------------------------------------------------------
         """
         # your code here
+        even = List()
+        odd = List()
+        self._aux_split_(even, odd)
+        return even, odd
+
+    def _aux_split_(self, target1, target2):
+        if self._front is not None:
+            target1._move_front_to_rear(self)
+            self._aux_split_(target2, target1)
         return
 
     def _linear_search_r(self, key):
@@ -697,7 +837,25 @@ class List:
         -------------------------------------------------------
         """
         # your code here
-        return
+        prev = None
+        curr = self._front
+        index = 0
+
+        if self._front is not None:
+            prev, curr, index = self._aux_search(key, prev, curr, index)
+        else:
+            index = -1
+
+        return prev, curr, index
+
+    def _aux_search(self, key, prev, curr, index):
+        if curr is None:
+            index = -1
+        elif curr._value != key:
+            prev, curr, index = self._aux_search(
+                key, curr, curr._next, index + 1)
+
+        return prev, curr, index
 
     def intersection(self, source1, source2):
         """
@@ -716,6 +874,21 @@ class List:
         -------------------------------------------------------
         """
         # your code here
+        source1_node = source1._front
+
+        while source1_node is not None:
+            value = source1_node._value
+            _, current, _ = source2._linear_search(value)
+
+            if current is not None:
+
+                _, current, _ = self._linear_search(value)
+
+                if current is None:
+
+                    self.append(value)
+
+            source1_node = source1_node._next
         return
 
     def intersection_r(self, source1, source2):
@@ -735,6 +908,22 @@ class List:
         -------------------------------------------------------
         """
         # your code here
+        self._aux_intersection_(source2, source1._front)
+
+        return
+
+    def _aux_intersection_(self, source2, source1_node):
+        if source1_node is not None:
+            value = source1_node._value
+            _, current, _ = source2._linear_search(value)
+
+            if current is not None:
+                _, current, _ = self._linear_search(value)
+
+                if current is None:
+                    self.append(value)
+            self._aux_intersection_(source2, source1_node._next)
+
         return
 
     def union(self, source1, source2):
@@ -754,6 +943,28 @@ class List:
         -------------------------------------------------------
         """
         # your code here
+        source1_node = source1._front
+
+        while source1_node is not None:
+            value = source1_node._value
+            _, current, _ = self._linear_search(value)
+
+            if current is None:
+
+                self.append(value)
+            source1_node = source1_node._next
+
+        source2_node = source2._front
+
+        while source2_node is not None:
+            value = source2_node._value
+            _, current, _ = self._linear_search(value)
+
+            if current is None:
+
+                self.append(value)
+
+            source2_node = source2_node._next
         return
 
     def union_r(self, source1, source2):
@@ -773,7 +984,16 @@ class List:
         -------------------------------------------------------
         """
         # your code here
+        self._aux_union_(source1._front)
+        self._aux_union_(source2._front)
         return
+
+    def _aux_union_(self, node):
+        if node is not None:
+            _, current, _ = self._linear_search(node._value)
+            if current is None:
+                self.append(node._value)
+            self._aux_union_(node._next)
 
     def clean_r(self):
         """
@@ -889,6 +1109,24 @@ class List:
             "Cannot move the front of an empty List"
 
         # your code here
+        node = source._front
+
+        source._count -= 1
+        source._front = source._front._next
+
+        if source._front is None:
+
+            source._rear = None
+
+        if self._rear is None:
+            self._front = node
+        else:
+            self._rear._next = node
+
+        node._next = None
+        self._rear = node
+        self._count += 1
+
         return
 
     def combine(self, source1, source2):
@@ -909,6 +1147,28 @@ class List:
         -------------------------------------------------------
         """
         # your code here
+        if source1._count >= source2._count:
+
+            while source2._front is not None:
+
+                self._move_front_to_rear(source1)
+                self._move_front_to_rear(source2)
+
+            while source1._front is not None:
+
+                self._move_front_to_rear(source1)
+
+        else:
+
+            while source1._front is not None:
+
+                self._move_front_to_rear(source1)
+                self._move_front_to_rear(source2)
+
+            while source2._front is not None:
+
+                self._move_front_to_rear(source2)
+
         return
 
     def combine_r(self, source1, source2):
