@@ -5,7 +5,7 @@ Food class utility functions.
 Author:  David Brown
 ID:      123456789
 Email:   dbrown@wlu.ca
-__updated__ = "2024-01-23"
+__updated__ = "2024-03-11"
 -------------------------------------------------------
 """
 from Food import Food
@@ -216,9 +216,9 @@ def food_table(foods):
     foods.sort()
     print("Food                                Origin       Vegetarian Calories")
     print("----------------------------------- ------------ ---------- --------")
-    for food in foods:
-        print(f"{food.name: <36}{Food.ORIGIN[food.origin]: <13}{
-              str(food.is_vegetarian): >10}{food.calories: >9}")
+    # for food in foods:
+    # print(f"{food.name: <36}{Food.ORIGIN[food.origin]: <13}{
+    # str(food.is_vegetarian): >10}{food.calories: >9}")
 
     return
 
