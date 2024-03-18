@@ -5,7 +5,7 @@ Linked version of the BST ADT.
 Author:  David Brown
 ID:      999999999
 Email:   dbrown@wlu.ca
-__updated__ = "2024-03-11"
+__updated__ = "2024-03-18"
 -------------------------------------------------------
 """
 # Imports
@@ -296,6 +296,8 @@ class BST:
         """
 
         # your code here
+        value = self.retrieve(key)
+        return value is not None
 
     def height(self):
         """
@@ -364,6 +366,27 @@ class BST:
         assert self._root is not None, "Cannot locate a parent in an empty BST"
 
         # your code here
+        value = None
+        parent = self._root
+
+        if parent._value != key:
+
+            if key > parent._value:
+                node = parent._right
+            else:
+                node = parent._left
+
+            while node is not None and value is None:
+                if node._value == key:
+                    value = deepcopy(parent._value)
+                elif key > node._value:
+                    parent = node
+                    node = node._right
+                elif key < node._value:
+                    parent = node
+                    node = node._left
+
+        return value
 
     def parent_r(self, key):
         """
@@ -380,6 +403,40 @@ class BST:
         assert self._root is not None, "Cannot locate a parent in an empty BST"
 
         # your code here
+        value = None
+        parent = self._root
+
+        if parent._value != key:
+
+            if key > parent._value:
+                node = parent._right
+            else:
+                node = parent._left
+
+            value = self._parent_r_aux(node, parent, key)
+
+        return value
+
+    def _parent_r_aux(self, node, parent, key):
+
+        if node is None:
+            # base case: value not found
+            value = None
+        elif node._value == key:
+            # base case: value found
+            value = deepcopy(parent._value)
+        elif key > node._value:
+            # node is larger: search right side
+            parent = node
+            node = node._right
+            value = self._parent_r_aux(node, parent, key)
+        elif key < node._value:
+            # node is smaller: search left side
+            parent = node
+            node = node._left
+            value = self._parent_r_aux(node, parent, key)
+
+        return value
 
     def max(self):
         """
@@ -535,6 +592,38 @@ class BST:
         """
 
         # your code here
+        zero = 0
+        one = 0
+        two = 0
+        node = self._root
+
+        zero, one, two = self._node_counts_aux(node, zero, one, two)
+
+        return zero, one, two
+
+    def _node_counts_aux(self, node, zero, one, two):
+
+        if node is None:
+            # base case: no node check this can use pass?
+            pass
+
+        elif node._left is None and node._right is None:
+            # base case: zero children
+            zero += 1
+        elif node._left is None:
+            # one child case 1
+            one += 1
+            zero, one, two = self._node_counts_aux(node._right, zero, one, two)
+        elif node._right is None:
+            # one child case 2
+            one += 1
+            zero, one, two = self._node_counts_aux(node._left, zero, one, two)
+        else:
+            two += 1
+            zero, one, two = self._node_counts_aux(node._left, zero, one, two)
+            zero, one, two = self._node_counts_aux(node._right, zero, one, two)
+
+        return zero, one, two
 
     def is_balanced(self):
         """

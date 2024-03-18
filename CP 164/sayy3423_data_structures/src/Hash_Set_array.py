@@ -3,9 +3,9 @@
 Array-based list version of the Hash Set ADT.
 -------------------------------------------------------
 Author:  David Brown
-ID:      123456789
+ID:      999999999
 Email:   dbrown@wlu.ca
-__updated__ = "2024-03-11"
+__updated__ = "2024-03-18"
 -------------------------------------------------------
 """
 # pylint: disable=protected-access
@@ -81,7 +81,10 @@ class Hash_Set:
         -------------------------------------------------------
         """
 
-        # your code here
+        hashkey = hash(key) % self._capacity
+        slot = self._table[hashkey]
+
+        return slot
 
     def __contains__(self, key):
         """
@@ -95,8 +98,9 @@ class Hash_Set:
             True if the Hash Set contains key, False otherwise.
         -------------------------------------------------------
         """
+        slot = self._find_slot(key)
 
-        # your code here
+        return key in slot
 
     def insert(self, value):
         """
@@ -111,32 +115,28 @@ class Hash_Set:
             inserted - True if value is inserted, False otherwise.
         -------------------------------------------------------
         """
-        # Make sure rehash is finished before hand
-        inserted = False
-        crypt = hash(value)
-        slot = crypt % self._capacity
-        if self._count == 0:
-            self._table[slot].append(value)
-            inserted = True
+
+        slot = self._find_slot(value)
+
+        if value in slot:
+
+            inserted = False
+
         else:
-            if self._table[slot].is_empty():
-                self._table[slot].append(value)
-                inserted = True
-            else:
-                i = self._table[slot].index(value)
-                if i == -1:
-                    self._table[slot].append(value)
-                    inserted = True
-        if inserted:
+
+            inserted = True
+            slot.insert(0, value)
             self._count += 1
-        if self._count > (self._LOAD_FACTOR * self._capacity):
-            self._rehash()
+
+            if self._count > (Hash_Set._LOAD_FACTOR * self._capacity):
+                self._rehash()
+
         return inserted
 
     def find(self, key):
         """
         ---------------------------------------------------------
-        Returns a copy of the value identified by key.
+        Returns the value identified by key.
         Use: value = hs.find(key)
         -------------------------------------------------------
         Parameters:
@@ -147,6 +147,7 @@ class Hash_Set:
         """
 
         # your code here
+        return
 
     def remove(self, key):
         """
@@ -160,27 +161,20 @@ class Hash_Set:
             value - if it exists in the Hash Set, None otherwise.
         -------------------------------------------------------
         """
-        crypt = hash(key)
-        if self._count == 0:
-            value = None
-        else:
-            slot = crypt % self._capacity
-            if self._table[slot].is_empty():
-                value = None
-            else:
-                i = self._table[slot].index(key)
-                if i == -1:
-                    value = None
-                else:
-                    value = self._table[slot][i]
-                    self._table[slot].pop(i)
-                    self._count -= 1
+
+        slot = self._find_slot(key)
+        # bad this is banned nononono but wont let me use loops??????
+        value = slot.remove(key)
+
+        if value is not None:
+            self._count -= 1
+
         return value
 
     def _rehash(self):
         """
         ---------------------------------------------------------
-        Creates a new larger table in the Hash Set and reallocates the
+        Increases the number of slots in the Hash Set and reallocates the
         existing data within the Hash Set to the new table.
         Use: hs._rehash()
         -------------------------------------------------------
@@ -188,32 +182,60 @@ class Hash_Set:
             None
         -------------------------------------------------------
         """
-        self._capacity = (2 * self._capacity) + 1
-        new_table = []
+
+        temp = self._table
+        self._capacity = self._capacity * 2 + 1
+        self._table = []
+
         for _ in range(self._capacity):
-            new_table.append(List())
-        for slots in self._table:
-            for value in slots:
-                crypt = hash(value) % self._capacity
-                new_table[crypt].append(value)
-        self._table = new_table
+            self._table.append(List())
+
+        while len(temp) > 0:
+
+            ogSlot = temp.pop(0)
+
+            while not ogSlot.is_empty():
+                value = ogSlot.remove_front()
+                slot = self._find_slot(value)
+                slot.insert(0, value)
+
         return
 
-    def is_identical(self, target):
+    def __eq__(self, target):
         """
-        ---------------------------------------------------------
-        Determines whether two hash sets are identical.
-        Use: b = source.is_identical(target)
-        -------------------------------------------------------
+        ----------------
+        Determines whether two Hash_Sets are equal.
+        Values in self and target are compared and if all values are equal
+        and in the same order, returns True, otherwise returns False.
+        Use: equals = source == target
+        ---------------
         Parameters:
-             target - another hash set (Hash_Set)
+            target - a hash set (Hash_Set)
         Returns:
-            identical - True if this hash set contains the same values
-                as other in the same order, otherwise returns False.
-        -------------------------------------------------------
+            equals - True if source contains the same values
+                as target in the same order, otherwise False. (boolean)
+        ---------------
         """
+        if self._count == target._count:
 
-        # your code here
+            equals = True
+            count = 0
+            while count < len(self._table) and equals:
+
+                count2 = 0
+                while count2 < len(self._table[count]) and equals:
+
+                    if self._table[count][count2] != target._table[count][count2]:
+                        equals = False
+
+                    else:
+                        count2 += 1
+
+                count += 1
+        else:
+            equals = False
+
+        return equals
 
     def debug(self):
         """
@@ -228,15 +250,19 @@ class Hash_Set:
             None
         -------------------------------------------------------
         """
-        print(f"{len(self._table)} slots")
-        print()
-        print("========================================")
-        for index in range(len(self._table)):
-            print(f"Slot {index}")
+
+        print("{} Slots".format(self._capacity))
+
+        for i in range(len(self._table)):
+
+            print(SEP)
+            print("Slot {}".format(i))
             print()
-            for value in self._table[index]:
-                print(value)
-                print()
+
+            for j in self._table[i]:
+                print(j)
+
+        print(SEP)
         return
 
     def __iter__(self):
@@ -244,7 +270,7 @@ class Hash_Set:
         USE FOR TESTING ONLY
         -------------------------------------------------------
         Generates a Python iterator. Iterates through the hash set
-        from first to last slot. Assumes slot has own iterator.
+        from first to last slots. Assumes slot has own iterator.
         Use: for v in q:
         -------------------------------------------------------
         Returns:
