@@ -5,7 +5,7 @@ Array version of the Sorted_List ADT.
 Author:  David Brown
 ID:      123456789
 Email:   dbrown@wlu.ca
-__updated__ = "2024-02-02"
+__updated__ = "2024-03-25"
 -------------------------------------------------------
 """
 from copy import deepcopy

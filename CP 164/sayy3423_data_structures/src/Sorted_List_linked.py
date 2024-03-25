@@ -5,7 +5,7 @@ Linked version of the Sorted_List ADT.
 Author:  David Brown
 ID:      123456789
 Email:   dbrown@wlu.ca
-__updated__ = "2024-03-07"
+__updated__ = "2024-03-25"
 -------------------------------------------------------
 """
 # Imports
@@ -1000,3 +1000,61 @@ class Sorted_List:
         while current is not None:
             yield current._value
             current = current._next
+
+    @staticmethod
+    def radix_sort(a):
+        """
+        -------------------------------------------------------
+        Performs a base 10 radix sort.
+        Use: radix_sort(a)
+        -------------------------------------------------------
+        Parameters:
+            a - a List of base 10 integers (List)
+        Returns:
+            None
+        -------------------------------------------------------
+        """
+
+        buckets = [[], [], [], [], [], [], [], [], [], []]
+        max = 0
+        current = a._front
+
+        while current is not None:
+
+            num_length = len(str(current._value))
+
+            if num_length > max:
+                max = num_length
+
+            current = current._next
+
+        current = a._front
+
+        for i in range(1, max + 1):
+
+            while current is not None:
+
+                num_lgth = len(str(current._value))
+
+                if num_lgth >= i:
+
+                    digit = str(current._value)[-i]
+                    digit = int(digit)
+                    # need to move them smfh
+                    buckets[digit].append(current._value)
+
+                else:
+                    # need to move them smfh
+                    buckets[0].append(current._value)
+
+                a.remove(current._value)
+                current = current._next
+
+            for bucket in buckets:
+                for x in bucket:
+                    a.append(x)
+
+            current = a._front
+            buckets = [[], [], [], [], [], [], [], [], [], []]
+
+        return
